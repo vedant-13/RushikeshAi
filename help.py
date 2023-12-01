@@ -17,6 +17,8 @@ access_token = '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'
 if not access_token:
     st.error("Access token not found. Please set the ACCESS_TOKEN environment variable.")
 
+name=st.title("Generate images by just text")
+
 prompt = st.text_area("Enter Text Prompt", placeholder="Type a prompt...")
 
 # Add a toggle button for negative prompts
