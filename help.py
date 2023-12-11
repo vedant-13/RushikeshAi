@@ -17,8 +17,7 @@ access_token = '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'
 if not access_token:
     st.error("Access token not found. Please set the ACCESS_TOKEN environment variable.")
 
-name=st.title("Generate images by just text")
-
+name=st.title("Generate images by text")
 prompt = st.text_area("Enter Text Prompt", placeholder="Type a prompt...")
 
 # Add a toggle button for negative prompts
@@ -27,8 +26,8 @@ negative_prompt = ""
 if negative_prompt_toggle:
     negative_prompt = st.text_area("Enter Negative Prompt")
 
-
 title=st.sidebar.write("Rushikesh Ai")
+
 # Select image style
 image_style = st.sidebar.selectbox("Image Style", ["Default", "Leonardo", "Abstract Expressionism", "Chiaroscuro", "Cubism", "Fauvism", "Impressionism", "Minimalism", "Pop Art", "Post-Impressionism", "Realism", "Sfumato", "Perspective"]) 
 
@@ -98,7 +97,7 @@ if st.button("Generate Image"):
         "Authorization": f"Bearer {access_token}"
     }
 
-    API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
+    API_URL = "https://api-inference.huggingface.co/models/playgroundai/playground-v2-1024px-aesthetic"
 
     payload = {
         "inputs": prompt,
@@ -111,7 +110,7 @@ if st.button("Generate Image"):
         response = requests.post(API_URL, headers=headers, json=payload)
         response.raise_for_status()  # Raises a HTTPError if the status is 4xx, 5xx
     except requests.exceptions.RequestException as err:
-        st.error(f"An error occurred: {err}")
+        st.error("An error occurred while generating the image. Please try again later.")
     else:
         if response.status_code == 200:
             image_bytes = response.content
