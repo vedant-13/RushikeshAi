@@ -97,8 +97,7 @@ if st.button("Generate Image"):
         "Authorization": f"Bearer {access_token}"
     }
 
-    API_URL = "https://api-inference.huggingface.co/models/mhdang/dpo-sdxl-text2image-v1"
-
+API_URL = "https://api-inference.huggingface.co/models/playgroundai/playground-v2-1024px-aesthetic"
     payload = {
         "inputs": prompt,
         "guidance_scale": guidance_scale,
